@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PaidView: View {
+    @State var randomInt = Double.random(in: 1000000..<9999999)
     var body: some View {
         ZStack{
             VStack{
@@ -24,7 +25,7 @@ struct PaidView: View {
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
-                Text("Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.")
+                Text("Подтверждение заказа №\(String(format: "%.0f", randomInt)) может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.")
                     .font(Font.custom("SF Pro Display", size: 16))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(red: 0.51, green: 0.53, blue: 0.59))
