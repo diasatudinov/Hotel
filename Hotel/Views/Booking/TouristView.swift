@@ -8,32 +8,21 @@
 import SwiftUI
 
 struct TouristView: View {
-    @State var tourists:[Tourist] = [Tourist()]
-    @State var indexx: Int = 0
+    @State var tourists:[Tourist] = [Tourist(count: "Первый", name: "")]
+    @ObservedObject var viewModel: ViewModel
+    @State var indexx: Int = 2
     @State private var isRotated = false
+    @State var name: String = ""
+    
+    
     var body: some View {
         VStack{
             ForEach(tourists, id: \.self) { tourist in
                 DisclosureGroup {
-                    Text("AAAAAAAA")
+                    TouristExpandedView(viewModel: viewModel).padding(.leading,16).padding(.bottom,16)
                 } label: {
-                    HStack{
-                        Text("Первый турист ")
-                            .font(
-                                Font.custom("SF Pro Display", size: 22)
-                                    .weight(.medium)
-                            )
-                            .foregroundColor(.black)
-                        Spacer()
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 32.00001, height: 32.00001, alignment: .center)
-                                .foregroundColor(Color(red: 0.4627, green: 0.8392, blue: 1.0).opacity(0.1))
-                                .cornerRadius(6)
-                            Image("ArrowUp")
-                        }
-                    }
-                }
+                    TouristClosedView(count: tourist.count)
+                }.buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(false)
             }
             
             HStack{
@@ -45,39 +34,45 @@ struct TouristView: View {
                   .foregroundColor(.black)
                 Spacer()
                 Button {
-                    tourists.append(Tourist())
-                    indexx += 1
+                    addTourist()
                 } label: {
                     ZStack{
                         Rectangle()
-                            .frame(width: 24, height: 24)
+                            .frame(width: 32.00001, height: 32.00001)
+                            .background(Color(red: 0.05, green: 0.45, blue: 1))
+                            .cornerRadius(6)
                         Image(systemName: "plus")
                             .foregroundColor(Color.white)
                     }
                 }
-            }
-            Button {
-                tourists.append(Tourist())
-                indexx += 1
-            } label: {
-                ZStack{
-                    Rectangle()
-                        .frame(width: 24, height: 24)
-                    Image(systemName: "plus")
-                        .foregroundColor(Color.white)
-                }
-            }
+            }.padding(.trailing, 18)
         }
-        
-
+    }
+    
+    func addTourist(){
+        let tourist = Tourist(count: "\(ordinalNumber(indexx))", name: name)
+        tourists.append(tourist)
+        indexx += 1
+    }
+    
+    func ordinalNumber(_ number: Int) -> String {
+        switch number {
+        case 2:
+            return "Второй"
+        case 3:
+            return "Третий"
+        case 4:
+            return "Четвертый"
+        case 5:
+            return "Пятый"
+        default:
+            return "\(number)-й"
+        }
     }
 }
 
-struct Tourist: Hashable{
-    
-}
 struct TouristView_Previews: PreviewProvider {
     static var previews: some View {
-        TouristView()
+        TouristView(viewModel: ViewModel(), name: "")
     }
 }

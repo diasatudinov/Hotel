@@ -13,6 +13,15 @@ class ViewModel: ObservableObject{
     @Published var rooms: Rooms = Rooms(rooms: [Room(id: 0000, name: "", price: 0000, pricePer: "", peculiarities: ["",""], imageUrls: ["","",""]), Room(id: 0000, name: "", price: 0000, pricePer: "", peculiarities: ["",""], imageUrls: ["","",""]) ])
     @Published var bookings: Booking = Booking(id: 0, hotelName: "", hotelAddress: "", horating: 0, ratingName: "", departure: "", arrivalCountry: "", tourDateStart: "", tourDateStop: "", numberOfNights: 0, room: "", nutrition: "", tourPrice: 0, fuelCharge: 0, serviceCharge: 0)
     
+    
+    @Published var name: String = ""
+    @Published var surname: String = ""
+    @Published var date: String = ""
+    @Published var citizenship: String = ""
+    @Published var passportNumber: String = ""
+    @Published var passportValidityPeriod: String = ""
+    @Published var isFull: Bool = true
+    
     func hotelFetch() {
         guard let url = URL(string: "https://run.mocky.io/v3/35e0d18e-2521-4f1b-a575-f0fe366f66e3") else {
             return
