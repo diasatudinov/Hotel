@@ -6,20 +6,26 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CarouselView: View {
     let urls: [String]
     var body: some View {
-            TabView{
-                ForEach(urls, id: \.self){ url in
-                    URLImage(urlString: url)
-                        .ignoresSafeArea()
-                        .cornerRadius(15)
+        TabView{
+            ForEach(urls, id: \.self){ url in
+                CachedAsyncImage(url: URL(string:url)) { image in
+                    image
+                        .resizable()
                         .scaledToFit()
+                        .cornerRadius(15)
+                        .padding(.horizontal,16)
+                } placeholder: {
+                    ProgressView()
                 }
-            }.tabViewStyle(PageTabViewStyle())
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                .ignoresSafeArea()
+            }
+        }.tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+            //.ignoresSafeArea()
     }
 }
 

@@ -15,11 +15,11 @@ struct RoomView: View {
                 VStack(alignment: .leading){
                     CarouselView(urls: room.imageUrls)
                         .frame(height: 300)
-                        .scaledToFill()
+                        .cornerRadius(15)
                         .padding(.bottom,8)
                     BlockWithRoomView(roomName: room.name, roomPrice: room.price, pricePer: room.pricePer, peculiarities: room.peculiarities)
-                        .padding(.bottom,8)
-                }.padding(16).background(Color.white).cornerRadius(15)
+                        .padding(.bottom,8).padding(.horizontal,16)
+                }.padding(.vertical,16).background(Color.white).cornerRadius(15)
             }.background(Color(red: 0.96, green: 0.96, blue: 0.98)).onAppear {
                 viewModel.roomFetch()
                 viewModel.hotelFetch()

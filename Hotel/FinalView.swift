@@ -18,12 +18,12 @@ struct FinalView: View {
                         VStack{
                             CarouselView(urls:hotel.imageUrls)
                                 .frame(height: 257)
-                                .scaledToFit()
+                                .cornerRadius(15)
                             HStack{
                                 DataView(rating: hotel.rating, ratingName: hotel.ratingName, name: hotel.name, address: hotel.adress, minimalPrice: hotel.minimalPrice, priceForIt: hotel.priceForIt)
                                 Spacer()
-                            }
-                        }.padding(16).background(Color.white).cornerRadius(15)
+                            }.padding(.horizontal,16)
+                        }.padding(.vertical,16).background(Color.white).cornerRadius(15)
                         
                         HotelDetailsView(peculiarities: hotel.aboutTheHotel.peculiarities, description: hotel.aboutTheHotel.description)
                             .padding(16).background(Color.white).cornerRadius(15)

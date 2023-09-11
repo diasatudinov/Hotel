@@ -37,6 +37,7 @@
 		943E55662AADB146002379A4 /* PaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E55652AADB146002379A4 /* PaidView.swift */; };
 		943E55682AAE3601002379A4 /* modelTourist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E55672AAE3601002379A4 /* modelTourist.swift */; };
 		943E556A2AAE4328002379A4 /* PaidButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943E55692AAE4328002379A4 /* PaidButtonView.swift */; };
+		94E60C632AAF115F00808E22 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 94E60C622AAF115F00808E22 /* CachedAsyncImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				943BCAEC2AA9C80600DAE8EF /* iPhoneNumberField in Frameworks */,
+				94E60C632AAF115F00808E22 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +250,7 @@
 			name = Hotel;
 			packageProductDependencies = (
 				943BCAEB2AA9C80600DAE8EF /* iPhoneNumberField */,
+				94E60C622AAF115F00808E22 /* CachedAsyncImage */,
 			);
 			productName = Hotel;
 			productReference = 943BCA942AA6F2D000DAE8EF /* Hotel.app */;
@@ -279,6 +282,7 @@
 			mainGroup = 943BCA8B2AA6F2D000DAE8EF;
 			packageReferences = (
 				943BCAEA2AA9C80600DAE8EF /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				94E60C612AAF115F00808E22 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = 943BCA952AA6F2D000DAE8EF /* Products */;
 			projectDirPath = "";
@@ -545,6 +549,14 @@
 				minimumVersion = 0.10.1;
 			};
 		};
+		94E60C612AAF115F00808E22 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -552,6 +564,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 943BCAEA2AA9C80600DAE8EF /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
+		};
+		94E60C622AAF115F00808E22 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 94E60C612AAF115F00808E22 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
